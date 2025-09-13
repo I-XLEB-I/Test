@@ -1,18 +1,20 @@
 #1
 import math
-
 n = int(input())          
 print(math.factorial(n)) 
+
+
 #2
 import math as m
-
 n = int(input())        
 print(m.factorial(n))   
+
+
 #3
 from math import factorial
-
 n = int(input())       # считываем число
 print(factorial(n))    # вызываем напрямую factorial()
+
 #4
 def my_factorial(n):
     if not isinstance(n, int):
@@ -34,4 +36,57 @@ print(my_factorial(0))
 print(my_factorial(7))  
 print(my_factorial(-3))   
 print(my_factorial(3.5))  
+
 #5
+# my_math.py
+
+def my_factorial(n):
+    """Вычисление факториала числа n"""
+    if not isinstance(n, int):
+        raise TypeError("n должно быть целым числом")
+    if n < 0:
+        raise ValueError("n должно быть неотрицательным числом")
+    if n == 0 or n == 1:
+        return 1
+
+    result = 1
+    for i in range(2, n + 1):
+        result *= i
+    return result
+
+
+def my_pow(a, b):
+    """Возведение числа a в степень b"""
+    if not isinstance(b, int):
+        raise TypeError("Степень должна быть целым числом")
+    result = 1
+    for _ in range(abs(b)):
+        result *= a
+    return result if b >= 0 else 1 / result
+
+
+def my_sum(numbers):
+    """Сумма элементов списка"""
+    if not all(isinstance(x, (int, float)) for x in numbers):
+        raise TypeError("Все элементы должны быть числами")
+    total = 0
+    for x in numbers:
+        total += x
+    return total
+
+# main.py 
+
+from my_math import my_factorial, my_pow, my_sum
+
+# Факториал
+n = int(input("Введите число для факториала: "))
+print("Факториал:", my_factorial(n))
+
+# Возведение в степень
+a = int(input("Введите число для возведения в степень: "))
+b = int(input("Введите степень: "))
+print("Результат:", my_pow(a, b))
+
+# Сумма списка
+numbers = [1, 2, 3, 4, 5]
+print("Сумма чисел [1, 2, 3, 4, 5]:", my_sum(numbers))
