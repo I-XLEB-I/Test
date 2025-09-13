@@ -1,3 +1,37 @@
+#1
 import math
+
 n = int(input())          
 print(math.factorial(n)) 
+#2
+import math as m
+
+n = int(input())        
+print(m.factorial(n))   
+#3
+from math import factorial
+
+n = int(input())       # считываем число
+print(factorial(n))    # вызываем напрямую factorial()
+#4
+def my_factorial(n):
+    if not isinstance(n, int):
+        raise TypeError("n должно быть целым числом")
+    
+    if n < 0:
+        raise ValueError("n должно быть неотрицательным числом")
+    
+    if n == 0 or n == 1:
+        return 1
+    
+    result = 1
+    for i in range(2, n + 1):
+        result *= i
+    
+    return result
+print(my_factorial(5))   
+print(my_factorial(0))   
+print(my_factorial(7))  
+print(my_factorial(-3))   
+print(my_factorial(3.5))  
+#5
